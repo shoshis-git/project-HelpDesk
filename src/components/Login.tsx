@@ -3,6 +3,7 @@ import { AuthContext } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { login } from "../pages/loginApi";
+import Swal from "sweetalert2";
 
 
 
@@ -24,9 +25,24 @@ const Login: FunctionComponent = () => {
       const { token, user } = response.data;
       localStorage.setItem("token", token);
       dispatch({ type: "LOGIN_SUCCESS", payload: { token, user } });
+      Swal.fire({
+      title: `שלום ל${user.name}`,
+      text: 'התחברת בהצלחה',
+      icon: 'success',
+      confirmButtonText: 'מעולה',
+      confirmButtonColor: '#28a745', // צבע ירוק להצלחה
+      timer: 2500, // ההודעה תיסגר אוטומטית אחרי 2.5 שניות
+      timerProgressBar: true
+    });
       navigate("/dashboard");
     } catch (err: any) {
       dispatch({ type: "LOGIN_FAILURE", payload: err.response?.data?.message || "Login Failed" });
+      Swal.fire({
+      title: 'אופס...',
+      text: 'חלה שגיאה בהתחברות. כדאי לנסות שוב.',
+      icon: 'error',
+      confirmButtonText: 'הבנתי'
+    });
 
     }
 

@@ -12,7 +12,7 @@ const Header: FunctionComponent = () => {
 
     const { state, dispatch } = useContext(AuthContext);
     const navigate = useNavigate();
-
+    
     const logout = () => {
         localStorage.removeItem("token");
         dispatch({ type: "LOGOUT" });

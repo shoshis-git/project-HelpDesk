@@ -4,6 +4,7 @@ import { AuthContext } from "../context/AuthContext";
 import { TicketsContext } from "../context/TicketsContext";
 import { addTicket, getPriorities } from "../pages/ticketsApi";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 
@@ -33,13 +34,27 @@ const NewTickets: FunctionComponent<NewTicketProps> = () => {
 
       dispatch({ type: "UPDATE_TICKET", payload: response });
       reset();
-      alert("הפנייה נשלחה בהצלחה ✅");
+      Swal.fire({
+      title: 'הטיקט נוסף',
+      text: 'הטיקט נוסף בהצלחה נשתדל לענות בהקדם האפשרי',
+      icon: 'success',
+      confirmButtonText: 'מעולה',
+      confirmButtonColor: '#28a745', // צבע ירוק להצלחה
+      timer: 2500, // ההודעה תיסגר אוטומטית אחרי 2.5 שניות
+      timerProgressBar: true
+    });
 
       // ✅ מעבר לרשימת הטיקטים
       navigate("/tickets/ticketList");
 
     } catch (err: any) {
       dispatch({ type: "LOAD_FAILURE", payload: err.response?.data?.message || "Added Failed" });
+      Swal.fire({
+      title: 'אופס...',
+      text: 'חלה שגיאה בשליחת הטיקט. כדאי לנסות שוב.',
+      icon: 'error',
+      confirmButtonText: 'הבנתי'
+    });
 
     }
 

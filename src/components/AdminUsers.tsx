@@ -16,6 +16,7 @@ import {
 
 
 } from '@mui/material';
+import Swal from "sweetalert2";
 
 
 
@@ -43,7 +44,7 @@ const AdminUsers: FunctionComponent = () => {
 
         try {
             const dataUsers = await getAllUsers(state.token);
-            
+
             setUsers(dataUsers);
         } catch (err: any) {
             if (err.response?.status === 409)
@@ -51,7 +52,7 @@ const AdminUsers: FunctionComponent = () => {
 
             else
                 setError("שגיאה בטעינת משתמשים");
-           
+
             console.error("Error fetching users:", error);
         }
         finally {
@@ -80,6 +81,7 @@ const AdminUsers: FunctionComponent = () => {
 
         try {
 
+
             createUser(formData, state.token!);
 
             setFormData({
@@ -90,8 +92,23 @@ const AdminUsers: FunctionComponent = () => {
             });
             setShowAddUser(!showAddUser)
             loaderUsers(); // רענון רשימת משתמשים
+            Swal.fire({
+                title: 'המשתמש נוסף!',
+                text: 'המשתמש פורסמה בהצלחה.',
+                icon: 'success',
+                confirmButtonText: 'מעולה',
+                confirmButtonColor: '#28a745', // צבע ירוק להצלחה
+                timer: 2500, // ההודעה תיסגר אוטומטית אחרי 2.5 שניות
+                timerProgressBar: true
+            });
         } catch (err: any) {
             setError(err.response?.data?.message || "שגיאה בהוספת משתמש");
+            Swal.fire({
+                title: 'אופס...',
+                text: 'חלה שגיאה בשמירת המשתמש. כדאי לנסות שוב.',
+                icon: 'error',
+                confirmButtonText: 'הבנתי'
+            });
         } finally {
             setLoading(false);
         }

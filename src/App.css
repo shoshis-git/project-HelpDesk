@@ -1254,6 +1254,137 @@ html {
     font-size: inherit;
 }
 
+
+
+/* הגדרת גובה מלא לכל הדף */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+/* המכולה הראשית של האתר */
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* גובה מינימלי של כל המסך */
+}
+
+/* עטיפת התוכן שתופסת את כל המקום הפנוי */
+.content-wrap {
+    flex: 1; /* זה מה שדוחף את הפוטר למטה */
+}
+
+/* עיצוב הפוטר עצמו */
+.footer {
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    width: 100%;
+    /* אין צורך ב-position: absolute, ה-Flexbox עושה את העבודה */
+     direction: rtl;
+}
+
+.footer {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 30px 15px;
+    direction: rtl;
+    width: 100%;
+}
+
+.footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    /* ברירת מחדל: 4 טורים (למסכי מחשב) */
+    grid-template-columns: repeat(4, 1-fr); 
+    gap: 30px;
+}
+
+.footer-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-title {
+    color: #3498db;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-bottom: 2px solid #34495e;
+    width: 100%;
+    padding-bottom: 5px;
+}
+
+/* --- התאמה למסכים בינוניים (טאבלטים) --- */
+
+
+/* עיצוב כפתורים כללי */
+.btn-footer {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: 0.3s;
+}
+
+.btn-footer:hover {
+    background-color: #2980b9;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-title {
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.footer-section p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 5px 0;
+}
+
+.btn-logout, .btn-login {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+.btn-logout:hover, .btn-login:hover {
+    background: #2980b9;
+}
+
+
+
+
+
+
+
+
 /* --- הגדרות בסיס רספונסיביות --- */
 html {
     font-size: 16px;
@@ -1408,7 +1539,89 @@ body {
     font-size: 1.6rem;
     font-weight: 700;
 }
+/* מבנה העמוד להצמדה לתחתית */
+html, body, #root {
+    height: 100%;
+    margin: 0;
+}
 
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content-wrap {
+    flex: 1 0 auto;
+}
+
+/* עיצוב ה-Footer הרספונסיבי */
+.footer {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 40px 0;
+    width: 100%;
+    direction: rtl;
+    border-top: 4px solid #3498db;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap; /* מאפשר לטורים לרדת שורה באופן טבעי */
+    justify-content: space-around;
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.footer-section {
+    /* ב-Laptop: כל טור יתפוס בערך 22% מהרוחב */
+    flex: 1 1 200px; 
+    min-width: 200px;
+    max-width: 300px;
+    margin-bottom: 20px;
+}
+
+.footer-title {
+    color: #3498db;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.footer-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 40px;
+    height: 2px;
+    background-color: #3498db;
+}
+
+/* התאמה מיוחדת ל-Laptops קטנים ומסכים בינוניים */
+@media (max-width: 1024px) {
+    .footer-section {
+        flex: 1 1 40%; /* ב-Laptop קטן זה יסתדר ב-2 טורים בכל שורה */
+        max-width: 45%;
+    }
+}
+
+/* התאמה לטלפונים */
+@media (max-width: 600px) {
+    .footer-section {
+        flex: 1 1 100%; /* בטלפון טור אחד מלא */
+        max-width: 100%;
+        text-align: center;
+    }
+    
+    .footer-title::after {
+        right: 50%;
+        transform: translateX(50%);
+    }
+}
 /* --- 5. רספונסיביות למסכים שונים --- */
 
 /* מסכי Desktop גדולים (מעל 1200px) */
@@ -1587,5 +1800,27 @@ body {
         width: 50px;
         height: 50px;
         font-size: 1.3rem;
+    }
+}
+@media (max-width: 992px) {
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr); /* הופך ל-2 טורים */
+    }
+}
+
+/* --- התאמה למסכים קטנים (טלפונים) --- */
+@media (max-width: 576px) {
+    .footer-container {
+        grid-template-columns: 1fr; /* טור אחד ארוך */
+        text-align: center;
+    }
+    
+    .footer-section {
+        align-items: center; /* מרכז את הטקסט בטלפון */
+    }
+
+    .footer-title {
+        border-bottom: none;
+        text-decoration: underline;
     }
 }

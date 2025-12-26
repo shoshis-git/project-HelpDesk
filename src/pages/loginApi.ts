@@ -28,3 +28,4 @@ export const registerCustomer = async (user: RegisterUser) => {
     return data.data;
 }
 
+

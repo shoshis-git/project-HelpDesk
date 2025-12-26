@@ -6,6 +6,7 @@ import { addComment, getComment, getPriorities, getStatuses, getTicketById, upda
 import type { Comments, TicketPriority, TicketStatus } from "../models/tickets";
 import type { User } from "../models/user";
 import { getAllUsers } from "../pages/usersApi";
+import Swal from "sweetalert2";
 
 
 
@@ -129,10 +130,24 @@ const TicketDetails: FunctionComponent<TicketDetailsProps> = () => {
             const commentData = await addComment(comment, auth.token!, Number(id!));
             dispatch({ type: "ADD_COMMENT", payload: commentData });
             setComment("");
+            Swal.fire({
+                title: 'התגובה נוספה!',
+                text: 'תודות על השתתפותך, התגובה פורסמה בהצלחה.',
+                icon: 'success',
+                confirmButtonText: 'מעולה',
+                confirmButtonColor: '#28a745', // צבע ירוק להצלחה
+                timer: 2500, // ההודעה תיסגר אוטומטית אחרי 2.5 שניות
+                timerProgressBar: true
+            });
         }
         catch {
             dispatch({ type: "LOAD_FAILURE", payload: "Failed to add comment" });
-
+            Swal.fire({
+                title: 'אופס...',
+                text: 'חלה שגיאה בשליחת התגובה. כדאי לנסות שוב.',
+                icon: 'error',
+                confirmButtonText: 'הבנתי'
+            });
         }
 
     }
@@ -141,7 +156,7 @@ const TicketDetails: FunctionComponent<TicketDetailsProps> = () => {
     if (state.error) return <p>{state.error}</p>;
     if (!state.selectedTicket) return <p>טיקט לא נמצא</p>;
 
-    return (<div className="details-page-container">
+    return (<div className="details-page-container" >
         <div className="ticket-details-card">
             {/* כותרת הפנייה */}
             <header className="ticket-header">
