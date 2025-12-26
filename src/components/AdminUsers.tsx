@@ -40,10 +40,10 @@ const AdminUsers: FunctionComponent = () => {
         if (!state.token) return;
         setLoading(true);
         setError(null);
-        
+
         try {
             const dataUsers = await getAllUsers(state.token);
-            console.log("dataUsers", dataUsers);
+            
             setUsers(dataUsers);
         } catch (err: any) {
             if (err.response?.status === 409)
@@ -51,7 +51,7 @@ const AdminUsers: FunctionComponent = () => {
 
             else
                 setError("שגיאה בטעינת משתמשים");
-            console.log(error)
+           
             console.error("Error fetching users:", error);
         }
         finally {
@@ -61,7 +61,7 @@ const AdminUsers: FunctionComponent = () => {
     useEffect(() => {
 
         if (state.token)
-             loaderUsers();
+            loaderUsers();
 
     }, [state.token]);
 

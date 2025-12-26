@@ -6,8 +6,8 @@ import { Link, Outlet } from "react-router-dom";
 
 
 const AdminDashboard: React.FC = () => {
-    return (
-   <div>
+  return (
+    <div>
       <h1>ניהול מערכת</h1>
 
       <nav>
@@ -19,6 +19,6 @@ const AdminDashboard: React.FC = () => {
 
       <Outlet />
     </div>
-    )
+  )
 }
 export default AdminDashboard;

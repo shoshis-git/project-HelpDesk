@@ -40,13 +40,13 @@ const TicketDetails: FunctionComponent<TicketDetailsProps> = () => {
                 let priorities: TicketPriority[] = [];
 
                 if (auth.user?.role == "admin" || auth.user?.role == "agent") {
-                    if(!auth.token)return
-                    if(auth.user?.role == "admin"){
+                    if (!auth.token) return
+                    if (auth.user?.role == "admin") {
                         const users = await getAllUsers(auth.token);
                         agents = users.filter((user: User) => user.role === "agent");
                     }
 
-                    
+
                     statuses = await getStatuses(auth.token);
 
                     priorities = await getPriorities(auth.token);
@@ -64,7 +64,7 @@ const TicketDetails: FunctionComponent<TicketDetailsProps> = () => {
             }
 
 
-        }//loadTicket
+        }
         loadTicket();
 
     }, [id, auth.token, dispatch])
@@ -97,9 +97,9 @@ const TicketDetails: FunctionComponent<TicketDetailsProps> = () => {
         }
 
     };
-    const handleSaveStatues=async()=>{
-          if (!auth.token || !state.selectedTicket) return;
-          try {
+    const handleSaveStatues = async () => {
+        if (!auth.token || !state.selectedTicket) return;
+        try {
             dispatch({ type: "LOAD_START" });
 
             const updated = await updateStatus(
@@ -132,9 +132,9 @@ const TicketDetails: FunctionComponent<TicketDetailsProps> = () => {
         }
         catch {
             dispatch({ type: "LOAD_FAILURE", payload: "Failed to add comment" });
-            
+
         }
-    
+
     }
 
     if (state.loading) return <p>טוען...</p>;
@@ -142,87 +142,87 @@ const TicketDetails: FunctionComponent<TicketDetailsProps> = () => {
     if (!state.selectedTicket) return <p>טיקט לא נמצא</p>;
 
     return (<div className="details-page-container">
-    <div className="ticket-details-card">
-        {/* כותרת הפנייה */}
-        <header className="ticket-header">
-            <span className="ticket-id">פנייה #{state.selectedTicket.id}</span>
-            <h2>{state.selectedTicket.subject}</h2>
-            <div className="ticket-description">
-                <p>{state.selectedTicket.description}</p>
-            </div>
-        </header>
-
-        {/* אזור ניהול - מוצג לאדמין או סוכן */}
-        {(auth.user?.role === "admin" || auth.user?.role === "agent") && (
-            <div className="admin-management-box">
-                <h3>ניהול פנייה</h3>
-                <div className="management-grid">
-                    {auth.user?.role === "admin" && (
-                        <>
-                            <div className="form-group">
-                                <label>מוקצה ל:</label>
-                                <select className="modern-select" value={assignedTo ?? ""} onChange={e => setAssignedTo(Number(e.target.value) || null)}>
-                                    <option value="">לא מוקצה</option>
-                                    {state.agents.map((a: User) => (
-                                        <option key={a.id} value={a.id}>{a.name}</option>
-                                    ))}
-                                </select>
-                            </div>
-                            <div className="form-group">
-                                <label>עדיפות:</label>
-                                <select className="modern-select" value={priorityId} onChange={e => setPriorityId(Number(e.target.value))}>
-                                    {state.priorities.map((p: TicketPriority) => (
-                                        <option key={p.id} value={p.id}>{p.name}</option>
-                                    ))}
-                                </select>
-                            </div>
-                        </>
-                    )}
-
-                    <div className="form-group">
-                        <label>סטטוס פנייה:</label>
-                        <select className="modern-select" value={statusId} onChange={e => setStatusId(Number(e.target.value))}>
-                            {state.statuses.map((s: TicketStatus) => (
-                                <option key={s.id} value={s.id}>{s.name}</option>
-                            ))}
-                        </select>
-                    </div>
+        <div className="ticket-details-card">
+            {/* כותרת הפנייה */}
+            <header className="ticket-header">
+                <span className="ticket-id">פנייה #{state.selectedTicket.id}</span>
+                <h2>{state.selectedTicket.subject}</h2>
+                <div className="ticket-description">
+                    <p>{state.selectedTicket.description}</p>
                 </div>
-                <button className="btn-save-changes" onClick={auth.user?.role === "admin" ? handleSave : handleSaveStatues}>
-                    שמור עדכונים
-                </button>
-            </div>
-        )}
+            </header>
 
-        {/* זרם תגובות */}
-        <section className="comments-section">
-            <h3>💬 שיחה ותגובות</h3>
-            <div className="comments-list">
-                {state.comments.length === 0 ? (
-                    <p className="no-comments">אין תגובות עדיין בפנייה זו.</p>
-                ) : (
-                    state.comments.map((c: Comments) => (
-                        <div key={c.id} className="comment-bubble">
-                            <div className="comment-meta">
-                                <strong>{c.author_name}</strong>
-                                <span>{new Date(c.created_at).toLocaleString()}</span>
-                            </div>
-                            <p className="comment-content">{c.content}</p>
+            {/* אזור ניהול - מוצג לאדמין או סוכן */}
+            {(auth.user?.role === "admin" || auth.user?.role === "agent") && (
+                <div className="admin-management-box">
+                    <h3>ניהול פנייה</h3>
+                    <div className="management-grid">
+                        {auth.user?.role === "admin" && (
+                            <>
+                                <div className="form-group">
+                                    <label>מוקצה ל:</label>
+                                    <select className="modern-select" value={assignedTo ?? ""} onChange={e => setAssignedTo(Number(e.target.value) || null)}>
+                                        <option value="">לא מוקצה</option>
+                                        {state.agents.map((a: User) => (
+                                            <option key={a.id} value={a.id}>{a.name}</option>
+                                        ))}
+                                    </select>
+                                </div>
+                                <div className="form-group">
+                                    <label>עדיפות:</label>
+                                    <select className="modern-select" value={priorityId} onChange={e => setPriorityId(Number(e.target.value))}>
+                                        {state.priorities.map((p: TicketPriority) => (
+                                            <option key={p.id} value={p.id}>{p.name}</option>
+                                        ))}
+                                    </select>
+                                </div>
+                            </>
+                        )}
+
+                        <div className="form-group">
+                            <label>סטטוס פנייה:</label>
+                            <select className="modern-select" value={statusId} onChange={e => setStatusId(Number(e.target.value))}>
+                                {state.statuses.map((s: TicketStatus) => (
+                                    <option key={s.id} value={s.id}>{s.name}</option>
+                                ))}
+                            </select>
                         </div>
-                    ))
-                )}
-            </div>
+                    </div>
+                    <button className="btn-save-changes" onClick={auth.user?.role === "admin" ? handleSave : handleSaveStatues}>
+                        שמור עדכונים
+                    </button>
+                </div>
+            )}
 
-            <form className="add-comment-form" onSubmit={handleAddComment}>
-                <textarea 
-                    placeholder="כתוב תגובה חדשה..." 
-                    value={comment} 
-                    onChange={e => setComment(e.target.value)} 
-                />
-                <button type="submit" className="btn-comment">שלח תגובה</button>
-            </form>
-        </section>
-    </div>
-</div>)
+            {/* זרם תגובות */}
+            <section className="comments-section">
+                <h3>💬 שיחה ותגובות</h3>
+                <div className="comments-list">
+                    {state.comments.length === 0 ? (
+                        <p className="no-comments">אין תגובות עדיין בפנייה זו.</p>
+                    ) : (
+                        state.comments.map((c: Comments) => (
+                            <div key={c.id} className="comment-bubble">
+                                <div className="comment-meta">
+                                    <strong>{c.author_name}</strong>
+                                    <span>{new Date(c.created_at).toLocaleString()}</span>
+                                </div>
+                                <p className="comment-content">{c.content}</p>
+                            </div>
+                        ))
+                    )}
+                </div>
+
+                <form className="add-comment-form" onSubmit={handleAddComment}>
+                    <textarea
+                        placeholder="כתוב תגובה חדשה..."
+                        value={comment}
+                        onChange={e => setComment(e.target.value)}
+                    />
+                    <button type="submit" className="btn-comment">שלח תגובה</button>
+                </form>
+            </section>
+        </div>
+    </div>)
 }
 export default TicketDetails;

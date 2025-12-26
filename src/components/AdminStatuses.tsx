@@ -34,33 +34,33 @@ const AdminStatuses: FunctionComponent = () => {
     }, [])
 
     return (
-    <div className="admin-page-container">
-        <div className="status-management-card">
-            <header className="card-header">
-                <h2>ניהול סטטוסים</h2>
-                <p>צפה ועדכן את רשימת הסטטוסים הזמינים במערכת</p>
-            </header>
+        <div className="admin-page-container">
+            <div className="status-management-card">
+                <header className="card-header">
+                    <h2>ניהול סטטוסים</h2>
+                    <p>צפה ועדכן את רשימת הסטטוסים הזמינים במערכת</p>
+                </header>
 
-            <ul className="status-list">
-                {statuesArray.map((statue: TicketStatus, i) => (
-                    <li key={i} className="status-item">
-                        <span className="status-indicator"></span>
-                        {statue.name}
-                    </li>
-                ))}
-            </ul>
+                <ul className="status-list">
+                    {statuesArray.map((statue: TicketStatus, i) => (
+                        <li key={i} className="status-item">
+                            <span className="status-indicator"></span>
+                            {statue.name}
+                        </li>
+                    ))}
+                </ul>
 
-            <div className="add-status-form">
-                <input
-                    className="modern-input"
-                    placeholder="שם סטטוס חדש..."
-                    value={statues}
-                    onChange={e => setstatues(e.target.value)}
-                />
-                <button className="btn-save" onClick={create}>הוסף סטטוס</button>
+                <div className="add-status-form">
+                    <input
+                        className="modern-input"
+                        placeholder="שם סטטוס חדש..."
+                        value={statues}
+                        onChange={e => setstatues(e.target.value)}
+                    />
+                    <button className="btn-save" onClick={create}>הוסף סטטוס</button>
+                </div>
             </div>
-        </div>
-    </div>)
+        </div>)
 
 }
 export default AdminStatuses;

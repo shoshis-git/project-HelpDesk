@@ -1,4 +1,4 @@
-import { use, useContext, useEffect, type FunctionComponent } from "react";
+import { useContext, useEffect, type FunctionComponent } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { login, registerCustomer } from "../pages/loginApi";
@@ -11,7 +11,7 @@ import { useForm } from "react-hook-form";
 
 
 const Register: FunctionComponent = () => {
-  console.log("REGISTER RENDER");
+ 
 
   const { state, dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -24,22 +24,22 @@ const Register: FunctionComponent = () => {
 
 
   const onSubmit = async (data: any) => {
-    console.log("SUBMIT START", data);
+   
 
     dispatch({ type: "LOGIN_START" });
     try {
       const response = await registerCustomer(data);
-      console.log("API RESPONSE", response);
-      console.log(response);
+      
+      
       const loginResponse = await login(data.email, data.password);
       const { token, user } = loginResponse.data;
       localStorage.setItem("token", token);
       dispatch({ type: "REGISTER_SUCCESS", payload: { token, user } });
-      console.log("REGISTER SUCCESS", user);
+      
 
 
     } catch (err: any) {
-      console.log("REGISTER ERROR", err);
+      
       if (err.response?.status == 409) {
         dispatch({ type: "LOGIN_FAILURE", payload: err?.response?.data?.message || "User already exists" });
 
@@ -50,10 +50,10 @@ const Register: FunctionComponent = () => {
     }
   };
   useEffect(() => {
-    console.log("BEFORE NAVIGATE");
+    
     if (state.isAuthenticated) {
       navigate("/dashboard");
-      console.log("AFTER NAVIGATE");
+     
     }
 
   }, [state.isAuthenticated]);

@@ -1,73 +1,58 @@
-# React + TypeScript + Vite
+# 📌 Helpdesk System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A Helpdesk system for managing support tickets between customers, agents, and administrators.  
+The system allows creating tickets, routing them, handling updates, managing statuses and priorities, and communicating through comments — all based on user roles and permissions.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ⚙️ What the System Does
 
-## React Compiler
+Users can register and log in to the system.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Customers Can:
+- Open new tickets  
+- View tickets they created  
+- Add comments to their tickets  
 
-## Expanding the ESLint configuration
+### Agents Can:
+- View tickets assigned to them  
+- Update ticket status  
+- Add comments  
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Admins Can:
+- View all tickets  
+- Assign tickets to agents  
+- Update ticket status and priority  
+- Manage users  
+- Manage ticket statuses and priorities  
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 👥 User Roles
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+| Role     | Main Permissions                                        |
+|----------|--------------------------------------------------------|
+| Customer | Create tickets, view personal tickets, add comments   |
+| Agent    | Handle assigned tickets, update status, add comments |
+| Admin    | Full management: tickets, users, statuses, priorities|
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## ▶️ Run Instructions (Frontend)
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. Make sure Node.js is installed (version 18+ recommended)  
+
+2. Install dependencies:
+
+```bash
+npm install
+npm run dev
+http://localhost:5173
+Make sure the backend server is running and the API base URL is correctly configured in the project.
+
+
+Usage
+
+Register as a new user or login if you already have an account.
+
+Depending on your role, you can create tickets, view tickets, manage tickets, or administer the system.

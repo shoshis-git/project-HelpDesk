@@ -5,9 +5,9 @@ import { Outlet } from "react-router-dom"
 
 
 
-const Tickets:FC = () => {
+const Tickets: FC = () => {
     return <>
-    <h2>טיקטים</h2>
-    <Outlet /></>
+        <h2>טיקטים</h2>
+        <Outlet /></>
 }
 export default Tickets

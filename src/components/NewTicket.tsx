@@ -12,16 +12,9 @@ interface NewTicketProps {
 
 }
 
-
-// type Option = {
-//   value: number;
-//   label: string;
-// };
-
-
 const NewTickets: FunctionComponent<NewTicketProps> = () => {
 
-  const { handleSubmit, register, reset ,formState: { errors } } = useForm();
+  const { handleSubmit, register, reset, formState: { errors } } = useForm();
   const { state, dispatch } = useContext(TicketsContext);
   const { state: auth } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -40,10 +33,10 @@ const NewTickets: FunctionComponent<NewTicketProps> = () => {
 
       dispatch({ type: "UPDATE_TICKET", payload: response });
       reset();
-          alert("הפנייה נשלחה בהצלחה ✅");
+      alert("הפנייה נשלחה בהצלחה ✅");
 
-    // ✅ מעבר לרשימת הטיקטים
-    navigate("/tickets/ticketList");
+      // ✅ מעבר לרשימת הטיקטים
+      navigate("/tickets/ticketList");
 
     } catch (err: any) {
       dispatch({ type: "LOAD_FAILURE", payload: err.response?.data?.message || "Added Failed" });
@@ -70,7 +63,7 @@ const NewTickets: FunctionComponent<NewTicketProps> = () => {
         dispatch({ type: "LOAD_PRIORITY", payload: priority })
       }
       catch (err: any) {
-        console.log("Load priorities failed", err);
+        
         dispatch({ type: "LOAD_FAILURE", payload: err.response?.data?.message || "Load Failed" })
 
       }
@@ -96,7 +89,7 @@ const NewTickets: FunctionComponent<NewTicketProps> = () => {
             placeholder="כתוב כותרת קצרה לנושא..."
             {...register("subject")}
           />
-          
+
         </div>
 
         <div className="input-group">
@@ -124,9 +117,9 @@ const NewTickets: FunctionComponent<NewTicketProps> = () => {
           {errors.priority && <span className="error-message" role="alert">"שדה חובה"</span>}
         </div>
 
-        <input type="submit" className="btn-submit-ticket"/>
-          שלח פנייה למערכת
-        
+        <input type="submit" className="btn-submit-ticket" />
+        שלח פנייה למערכת
+
       </form>
     </div>
   </div>)

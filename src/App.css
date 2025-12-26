@@ -1,29 +1,33 @@
-
-
 /* header */
 /* הגדרות ה-Header כשהוא מקובע למעלה */
 .header-container {
-    position: fixed; /* מקבע את ה-Header למעלה */
+    position: fixed;
+    /* מקבע את ה-Header למעלה */
     top: 0;
     left: 0;
     right: 0;
     width: 100%;
-    height: 70px; /* גובה קבוע */
+    height: 70px;
+    /* גובה קבוע */
     display: flex;
-    justify-content: center; /* ממרכז את התוכן הפנימי */
+    justify-content: center;
+    /* ממרכז את התוכן הפנימי */
     align-items: center;
     background: white;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000; /* דואג שה-Header יהיה מעל שאר התוכן */
+    z-index: 1000;
+    /* דואג שה-Header יהיה מעל שאר התוכן */
     direction: rtl;
 }
 
 /* שכבת המעטפת הפנימית ששומרת על רוחב הגיוני */
 .nav-wrapper {
     width: 100%;
-    max-width: 1200px; /* מגביל את הרוחב כדי שלא יתפזר מדי במסכים רחבים */
+    max-width: 1200px;
+    /* מגביל את הרוחב כדי שלא יתפזר מדי במסכים רחבים */
     display: flex;
-    justify-content: space-between; /* מחלק את המקום בין הלוגו, הניווט והמשתמש */
+    justify-content: space-between;
+    /* מחלק את המקום בין הלוגו, הניווט והמשתמש */
     align-items: center;
     padding: 0 20px;
 }
@@ -33,20 +37,24 @@
     display: flex;
     gap: 2rem;
     align-items: center;
-    flex-grow: 1; /* נותן לניווט לתפוס את המרחב המרכזי */
-    justify-content: center; /* ממרכז את הקישורים עצמם */
+    flex-grow: 1;
+    /* נותן לניווט לתפוס את המרחב המרכזי */
+    justify-content: center;
+    /* ממרכז את הקישורים עצמם */
 }
 
 /* התאמת הדף כדי שהתוכן לא יתחבא מתחת ל-Header */
 body {
-    padding-top: 70px; /* גובה זהה לגובה ה-Header */
+    padding-top: 70px;
+    /* גובה זהה לגובה ה-Header */
 }
 
 /* לוגו */
 .logo {
     font-size: 1.5rem;
     font-weight: 800;
-    color: #2563eb; /* כחול מודרני */
+    color: #2563eb;
+    /* כחול מודרני */
     letter-spacing: -0.5px;
 }
 
@@ -57,7 +65,8 @@ body {
     align-items: center;
 }
 
-.nav-item, .admin-menu a {
+.nav-item,
+.admin-menu a {
     text-decoration: none;
     color: #4b5563;
     font-weight: 500;
@@ -65,7 +74,8 @@ body {
     transition: color 0.2s ease;
 }
 
-.nav-item:hover, .admin-menu a:hover {
+.nav-item:hover,
+.admin-menu a:hover {
     color: #2563eb;
 }
 
@@ -121,7 +131,8 @@ body {
 }
 
 .btn-login {
-    background-color: #10b981; /* ירוק לכניסה */
+    background-color: #10b981;
+    /* ירוק לכניסה */
     color: white;
     border: none;
     padding: 0.5rem 1.5rem;
@@ -140,7 +151,8 @@ body {
 /* עמוד דשבורד ראשי */
 
 /* מוודא שכל המסך מאופס */
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -156,12 +168,24 @@ html, body {
     background-color: #f8fafc;
     margin: 0 !important;
     direction: rtl;
-    
+
     /* פתרון הקסם: הפאדינג הזה "דוחף" את כל התוכן למטה מתחת ל-Header */
     /* ב-Desktop נשים 140px, ובמובייל נצמצם */
-    padding-top: 140px !important; 
+    padding-top: 140px !important;
     padding-bottom: 50px;
     box-sizing: border-box !important;
+}
+
+#underline {
+    width: 100%;
+    height: 2px;
+    background-color: #2563eb;
+    margin: 20px auto 0;
+
+    border-radius: 5px;
+
+
+
 }
 
 .central-container {
@@ -170,9 +194,11 @@ html, body {
     display: flex !important;
     flex-direction: column !important;
     gap: 25px;
-    margin-top: 0 !important; /* מבטלים את המרג'ין כי השתמשנו בפאדינג באבא */
+    margin-top: 0 !important;
+    /* מבטלים את המרג'ין כי השתמשנו בפאדינג באבא */
     transition: all 0.3s ease;
 }
+
 /* עיצוב משופר לכרטיסים */
 .welcome-section {
     background: #ffffff;
@@ -218,7 +244,9 @@ h1 {
 /* users */
 
 /* איפוס הגדרות האב שעלולות להפריע */
-#root, body, html {
+#root,
+body,
+html {
     width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
@@ -229,12 +257,13 @@ h1 {
 .table-page-container {
     display: flex !important;
     flex-direction: column !important;
-    align-items: center !important; /* מרכוז אופקי מושלם */
+    align-items: center !important;
+    /* מרכוז אופקי מושלם */
     width: 100vw !important;
     min-height: 100vh;
     background-color: #f1f5f9;
     /* הגדלנו את הריווח העליון ל-140px כדי לוודא שהכפתור יורד מתחת ל-Header */
-    padding: 140px 20px 60px 20px !important; 
+    padding: 140px 20px 60px 20px !important;
     box-sizing: border-box !important;
     direction: rtl;
 }
@@ -248,7 +277,8 @@ h1 {
     padding: 30px !important;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1) !important;
     border: 1px solid #e2e8f0 !important;
-    margin: 0 auto !important; /* מבטיח שהכרטיס עצמו באמצע */
+    margin: 0 auto !important;
+    /* מבטיח שהכרטיס עצמו באמצע */
 }
 
 /* הכפתור - עיצוב בולט שלא ילך לאיבוד */
@@ -297,108 +327,130 @@ h1 {
 
 /* מכולה חיצונית שמרכזת את הכל */
 .tickets-page-container {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: flex-start !important;
-  min-height: 100vh;
-  width: 100vw !important;
-  background-color: #f1f5f9;
-  /* ריווח עליון שמוודא ששום דבר לא מוסתר ע"י ה-Header */
-  padding: 120px 20px 60px 20px !important;
-  box-sizing: border-box;
-  direction: rtl;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    min-height: 100vh;
+    width: 100vw !important;
+    background-color: #f1f5f9;
+    /* ריווח עליון שמוודא ששום דבר לא מוסתר ע"י ה-Header */
+    padding: 120px 20px 60px 20px !important;
+    box-sizing: border-box;
+    direction: rtl;
 }
 
 /* הכרטיס הראשי */
 .tickets-card {
-  width: 100% !important;
-  max-width: 1200px !important;
-  background: #ffffff !important;
-  border-radius: 24px !important;
-  padding: 30px !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
-  border: 1px solid #e2e8f0;
+    width: 100% !important;
+    max-width: 1200px !important;
+    background: #ffffff !important;
+    border-radius: 24px !important;
+    padding: 30px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+    border: 1px solid #e2e8f0;
 }
 
 /* כותרת ואזור סינון */
 .tickets-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 25px;
-  flex-wrap: wrap;
-  gap: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 .tickets-header h2 {
-  font-size: 1.6rem;
-  color: #0f172a;
-  margin: 0;
+    font-size: 1.6rem;
+    color: #0f172a;
+    margin: 0;
 }
 
 /* עיצוב ה-Select המודרני */
 .modern-select {
-  padding: 10px 15px;
-  border-radius: 12px;
-  border: 1px solid #cbd5e1;
-  background-color: #fff;
-  font-weight: 600;
-  color: #334155;
-  cursor: pointer;
-  outline: none;
-  transition: border-color 0.2s;
+    padding: 10px 15px;
+    border-radius: 12px;
+    border: 1px solid #cbd5e1;
+    background-color: #fff;
+    font-weight: 600;
+    color: #334155;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s;
 }
 
 .modern-select:focus {
-  border-color: #2563eb;
+    border-color: #2563eb;
 }
 
 /* הטבלה המעוצבת */
 .table-wrapper {
-  overflow-x: auto;
-  border-radius: 16px;
-  border: 1px solid #f1f5f9;
+    overflow-x: auto;
+    border-radius: 16px;
+    border: 1px solid #f1f5f9;
 }
 
 .modern-tickets-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: right;
+    width: 100%;
+    border-collapse: collapse;
+    text-align: right;
 }
 
 .modern-tickets-table th {
-  background: #f8fafc;
-  padding: 18px 15px;
-  color: #64748b;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  border-bottom: 2px solid #f1f5f9;
+    background: #f8fafc;
+    padding: 18px 15px;
+    color: #64748b;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    border-bottom: 2px solid #f1f5f9;
 }
 
 .ticket-row {
-  transition: background 0.2s;
-  border-bottom: 1px solid #f8fafc;
+    transition: background 0.2s;
+    border-bottom: 1px solid #f8fafc;
 }
 
 .ticket-row:hover {
-  background-color: #f0f7ff !important;
+    background-color: #f0f7ff !important;
 }
 
 /* עמודות מיוחדות */
-.id-col { color: #94a3b8; font-family: monospace; }
-.subject-col { font-weight: 700; color: #1e293b; }
-.desc-col { max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #64748b; }
-
-/* תגיות עדיפות וסטטוס */
-.priority-tag, .status-badge {
-  padding: 5px 12px;
-  border-radius: 8px;
-  font-size: 0.8rem;
-  font-weight: 700;
+.id-col {
+    color: #94a3b8;
+    font-family: monospace;
 }
 
-.priority-high { background: #fee2e2; color: #dc2626; }
-.status-open { background: #dcfce7; color: #16a34a; }
+.subject-col {
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.desc-col {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #64748b;
+}
+
+/* תגיות עדיפות וסטטוס */
+.priority-tag,
+.status-badge {
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.priority-high {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.status-open {
+    background: #dcfce7;
+    color: #16a34a;
+}
 
 
 
@@ -421,7 +473,8 @@ h1 {
 /* הכרטיס הלבן */
 .status-management-card {
     width: 100% !important;
-    max-width: 500px !important; /* רוחב צר יותר מתאים לרשימת סטטוסים */
+    max-width: 500px !important;
+    /* רוחב צר יותר מתאים לרשימת סטטוסים */
     background: #ffffff !important;
     border-radius: 24px !important;
     padding: 35px !important;
@@ -519,8 +572,10 @@ h1 {
 /* מכולה חיצונית שפותרת את בעיית המיקום */
 .admin-page-container {
     display: flex !important;
-    justify-content: center !important; /* מרכוז אופקי */
-    align-items: flex-start !important; /* הצמדה למעלה כדי לשלוט ב-Padding */
+    justify-content: center !important;
+    /* מרכוז אופקי */
+    align-items: flex-start !important;
+    /* הצמדה למעלה כדי לשלוט ב-Padding */
     min-height: 100vh;
     width: 100vw !important;
     background-color: #f8fafc;
@@ -533,7 +588,8 @@ h1 {
 /* כרטיס ניהול העדיפויות */
 .priority-management-card {
     width: 100% !important;
-    max-width: 550px !important; /* רוחב ממוקד ונוח */
+    max-width: 550px !important;
+    /* רוחב ממוקד ונוח */
     background: #ffffff !important;
     border-radius: 24px !important;
     padding: 40px !important;
@@ -543,8 +599,15 @@ h1 {
 }
 
 @keyframes slideUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .card-header {
@@ -596,7 +659,8 @@ h1 {
 .priority-dot {
     width: 10px;
     height: 10px;
-    background: #ef4444; /* צבע דומיננטי לעדיפות */
+    background: #ef4444;
+    /* צבע דומיננטי לעדיפות */
     border-radius: 50%;
     margin-left: 15px;
     box-shadow: 0 0 8px rgba(239, 68, 68, 0.4);
@@ -655,7 +719,8 @@ h1 {
     min-height: 100vh;
     width: 100vw !important;
     background-color: #f1f5f9;
-    padding: 120px 20px 60px 20px !important; /* מרחק מה-Header */
+    padding: 120px 20px 60px 20px !important;
+    /* מרחק מה-Header */
     box-sizing: border-box;
     direction: rtl;
 }
@@ -749,8 +814,13 @@ h1 {
     margin-bottom: 8px;
 }
 
-.comment-meta strong { color: #0f172a; }
-.comment-meta span { color: #94a3b8; }
+.comment-meta strong {
+    color: #0f172a;
+}
+
+.comment-meta span {
+    color: #94a3b8;
+}
 
 .add-comment-form textarea {
     width: 100%;
@@ -805,8 +875,15 @@ h1 {
 }
 
 @keyframes fadeInSlide {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* כותרת הטופס */
@@ -851,8 +928,8 @@ h1 {
     font-size: 0.95rem;
 }
 
-.input-group input, 
-.input-group textarea, 
+.input-group input,
+.input-group textarea,
 .input-group select {
     padding: 14px 18px;
     border-radius: 14px;
@@ -863,8 +940,8 @@ h1 {
     background: #f8fafc;
 }
 
-.input-group input:focus, 
-.input-group textarea:focus, 
+.input-group input:focus,
+.input-group textarea:focus,
 .input-group select:focus {
     border-color: #3b82f6;
     background: #fff;
@@ -872,8 +949,8 @@ h1 {
 }
 
 /* טיפול בשגיאות */
-.input-group input.error, 
-.input-group textarea.error, 
+.input-group input.error,
+.input-group textarea.error,
 .input-group select.error {
     border-color: #ef4444;
 }
@@ -909,8 +986,10 @@ h1 {
 /* מרכוז מוחלט של כל דף הלוגין */
 .login-page-wrapper {
     display: flex !important;
-    justify-content: center !important; /* מרכוז אופקי */
-    align-items: center !important;    /* מרכוז אנכי */
+    justify-content: center !important;
+    /* מרכוז אופקי */
+    align-items: center !important;
+    /* מרכוז אנכי */
     width: 100vw !important;
     height: 100vh !important;
     background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
@@ -918,7 +997,8 @@ h1 {
     top: 0;
     left: 0;
     direction: rtl;
-    z-index: 9999; /* מוודא שזה מעל הכל */
+    z-index: 9999;
+    /* מוודא שזה מעל הכל */
 }
 
 .login-card {
@@ -1054,153 +1134,164 @@ h1 {
 
 /* מרכוז מוחלט וטיפול בהסתרה */
 .register-page-wrapper {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important; /* מרכוז אנכי מושלם */
-  width: 100vw !important;
-  min-height: 100vh !important;
-  background: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%);
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 40px 20px;
-  box-sizing: border-box;
-  direction: rtl;
-  z-index: 50;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    /* מרכוז אנכי מושלם */
+    width: 100vw !important;
+    min-height: 100vh !important;
+    background: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    direction: rtl;
+    z-index: 50;
 }
 
 /* כרטיס ההרשמה */
 .register-card {
-  width: 100%;
-  max-width: 450px;
-  background: #ffffff;
-  padding: 40px;
-  border-radius: 28px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+    width: 100%;
+    max-width: 450px;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 28px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .register-header {
-  text-align: center;
-  margin-bottom: 30px;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 .register-header h2 {
-  font-size: 1.8rem;
-  font-weight: 800;
-  color: #0f172a;
-  margin: 10px 0;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 10px 0;
 }
 
 .register-header p {
-  color: #64748b;
-  font-size: 0.95rem;
+    color: #64748b;
+    font-size: 0.95rem;
 }
 
 /* שדות טופס */
 .modern-form {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
 }
 
 .input-group label {
-  display: block;
-  font-weight: 700;
-  margin-bottom: 6px;
-  color: #1e293b;
-  font-size: 0.9rem;
+    display: block;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #1e293b;
+    font-size: 0.9rem;
 }
 
 .input-group input {
-  width: 100%;
-  padding: 12px 16px;
-  border-radius: 12px;
-  border: 2px solid #e2e8f0;
-  background: #f8fafc;
-  font-size: 1rem;
-  outline: none;
-  transition: all 0.2s;
-  box-sizing: border-box;
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 2px solid #e2e8f0;
+    background: #f8fafc;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.2s;
+    box-sizing: border-box;
 }
 
 .input-group input:focus {
-  border-color: #3b82f6;
-  background: #fff;
-  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+    border-color: #3b82f6;
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
 }
 
 .error-input {
-  border-color: #ef4444 !important;
+    border-color: #ef4444 !important;
 }
 
 .error-text {
-  color: #ef4444;
-  font-size: 0.8rem;
-  font-weight: 600;
-  margin-top: 4px;
-  display: block;
+    color: #ef4444;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: 4px;
+    display: block;
 }
 
 /* כפתור */
 .btn-register-submit {
-  width: 100%;
-  padding: 14px;
-  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-  color: white;
-  border: none;
-  border-radius: 12px;
-  font-size: 1.1rem;
-  font-weight: 700;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: transform 0.2s;
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: transform 0.2s;
 }
 
 .btn-register-submit:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .login-link-btn {
-  background: none;
-  border: none;
-  color: #3b82f6;
-  font-weight: 700;
-  cursor: pointer;
-  text-decoration: underline;
-  padding: 0;
-  font-size: inherit;
+    background: none;
+    border: none;
+    color: #3b82f6;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+    font-size: inherit;
 }
+
 /* --- הגדרות בסיס רספונסיביות --- */
 html {
-    font-size: 16px; /* בסיס לחישובי rem */
+    font-size: 16px;
+    /* בסיס לחישובי rem */
 }
 
 /* התאמת גדלי כרטיסים לכל המכשירים */
-.central-container, 
-.table-card, 
-.ticket-details-card, 
-.register-card, 
+.central-container,
+.table-card,
+.ticket-details-card,
+.register-card,
 .login-card {
-    width: 95% !important; /* תופס כמעט את כל הרוחב במסכים קטנים */
+    width: 95% !important;
+    /* תופס כמעט את כל הרוחב במסכים קטנים */
     margin: 0 auto !important;
     box-sizing: border-box;
 }
+
 /* --- פתרון גלובלי לטבלאות שבורחות --- */
 .table-responsive {
     width: 100%;
-    overflow-x: auto; /* מאפשר גלילה לצדדים במובייל */
-    -webkit-overflow-scrolling: touch; /* גלילה חלקה באייפון */
+    overflow-x: auto;
+    /* מאפשר גלילה לצדדים במובייל */
+    -webkit-overflow-scrolling: touch;
+    /* גלילה חלקה באייפון */
 }
 
 /* מניעת קריסת טקסט בטבלה */
-.modern-table th, .modern-table td {
-    white-space: nowrap; /* מונע מהטקסט להישבר לשורות בתוך תא קטן */
+.modern-table th,
+.modern-table td {
+    white-space: nowrap;
+    /* מונע מהטקסט להישבר לשורות בתוך תא קטן */
     padding: 12px 8px;
 }
+
 /* --- 1. איפוס והגדרות בסיס --- */
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -1227,7 +1318,8 @@ html, body {
     align-items: center;
     background: white;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 2000; /* גבוה מאוד כדי שלא יוסתר */
+    z-index: 2000;
+    /* גבוה מאוד כדי שלא יוסתר */
     direction: rtl;
 }
 
@@ -1242,34 +1334,37 @@ html, body {
 
 /* --- 3. WRAPPERS - מרכוז ומניעת הסתרה --- */
 /* כל המכולות הראשיות משתמשות באותו מבנה כדי למנוע הסתרה */
-.page-wrapper, 
-.table-page-container, 
-.tickets-page-container, 
-.admin-page-container, 
+.page-wrapper,
+.table-page-container,
+.tickets-page-container,
+.admin-page-container,
 .details-page-container,
 .form-page-container {
     display: flex !important;
     flex-direction: column !important;
-    align-items: center !important; /* מרכוז אופקי ב-Desktop */
+    align-items: center !important;
+    /* מרכוז אופקי ב-Desktop */
     justify-content: flex-start !important;
     width: 100% !important;
     min-height: 100vh;
     box-sizing: border-box !important;
-    padding-top: 110px !important; /* מרווח קבוע מה-Header לכל הדפים */
+    padding-top: 110px !important;
+    /* מרווח קבוע מה-Header לכל הדפים */
     padding-bottom: 50px;
     direction: rtl;
 }
 
 /* --- 4. CONTAINERS - הגבלת רוחב ב-Desktop --- */
-.central-container, 
-.table-card, 
-.tickets-card, 
-.status-management-card, 
-.priority-management-card, 
-.ticket-details-card, 
+.central-container,
+.table-card,
+.tickets-card,
+.status-management-card,
+.priority-management-card,
+.ticket-details-card,
 .new-ticket-card {
     width: 95% !important;
-    max-width: 1100px !important; /* רוחב אידיאלי למסכי Desktop */
+    max-width: 1100px !important;
+    /* רוחב אידיאלי למסכי Desktop */
     margin: 0 auto !important;
     background: #ffffff;
     border-radius: 24px;
@@ -1279,9 +1374,13 @@ html, body {
 }
 
 /* התאמה ספציפית לכרטיסים קטנים יותר ב-Desktop */
-.status-management-card, .priority-management-card, .login-card, .register-card {
+.status-management-card,
+.priority-management-card,
+.login-card,
+.register-card {
     max-width: 500px !important;
 }
+
 /* --- 6. אלמנטים פנימיים --- */
 .table-responsive {
     width: 100%;
@@ -1292,7 +1391,8 @@ html, body {
 .modern-table {
     width: 100%;
     border-collapse: collapse;
-    white-space: nowrap; /* מונע שבירת שורות בטבלה */
+    white-space: nowrap;
+    /* מונע שבירת שורות בטבלה */
 }
 
 .avatar-circle {
@@ -1308,29 +1408,41 @@ html, body {
     font-size: 1.6rem;
     font-weight: 700;
 }
+
 /* --- 5. רספונסיביות למסכים שונים --- */
 
 /* מסכי Desktop גדולים (מעל 1200px) */
 @media (min-width: 1200px) {
-    .central-container, .table-card, .tickets-card {
-        max-width: 1200px !important; /* ניצול רוחב במסכים רחבים מאוד */
+
+    .central-container,
+    .table-card,
+    .tickets-card {
+        max-width: 1200px !important;
+        /* ניצול רוחב במסכים רחבים מאוד */
     }
 }
 
 /* מסכי Laptop (בין 768px ל-1199px) */
 @media (max-width: 1199px) {
-    .central-container, .table-card, .tickets-card {
+
+    .central-container,
+    .table-card,
+    .tickets-card {
         max-width: 900px !important;
     }
 }
 
 /* Tablet (עד 768px) */
 @media (max-width: 768px) {
-    .page-wrapper, .table-page-container {
-        padding-top: 90px !important; /* צמצום ריווח עליון במובייל */
+
+    .page-wrapper,
+    .table-page-container {
+        padding-top: 90px !important;
+        /* צמצום ריווח עליון במובייל */
     }
-    
-    .table-header-actions, .tickets-header {
+
+    .table-header-actions,
+    .tickets-header {
         flex-direction: column;
         gap: 15px;
     }
@@ -1338,13 +1450,16 @@ html, body {
 
 /* Mobile (עד 480px) */
 @media (max-width: 480px) {
-    .page-wrapper, .table-page-container {
+
+    .page-wrapper,
+    .table-page-container {
         padding-top: 85px !important;
         padding-left: 10px !important;
         padding-right: 10px !important;
     }
-    
-    .table-card, .tickets-card {
+
+    .table-card,
+    .tickets-card {
         padding: 15px !important;
     }
 }
@@ -1352,14 +1467,24 @@ html, body {
 
 /* --- Mobile (טלפונים: עד 480px) --- */
 @media (max-width: 480px) {
-    .page-wrapper, .table-page-container, .admin-page-container, .details-page-container {
-        padding-top: 80px !important; /* צמצום ריווח עליון */
+
+    .page-wrapper,
+    .table-page-container,
+    .admin-page-container,
+    .details-page-container {
+        padding-top: 80px !important;
+        /* צמצום ריווח עליון */
         padding-left: 10px !important;
         padding-right: 10px !important;
     }
 
-    h1 { font-size: 1.5rem !important; }
-    h2 { font-size: 1.3rem !important; }
+    h1 {
+        font-size: 1.5rem !important;
+    }
+
+    h2 {
+        font-size: 1.3rem !important;
+    }
 
     /* הפיכת טבלאות לכרטיסים או גלילה */
     .table-responsive {
@@ -1367,13 +1492,17 @@ html, body {
     }
 
     /* התאמת כפתורים לרוחב מלא במובייל */
-    .btn-add-user, .btn-submit-ticket, .btn-login-submit, .btn-save-changes {
+    .btn-add-user,
+    .btn-submit-ticket,
+    .btn-login-submit,
+    .btn-save-changes {
         width: 100% !important;
         padding: 15px !important;
     }
 
     /* סידור מחדש של ה-Header (אם יש) */
-    .tickets-header, .table-header-actions {
+    .tickets-header,
+    .table-header-actions {
         flex-direction: column;
         gap: 15px;
         text-align: center;
@@ -1382,26 +1511,34 @@ html, body {
 
 /* --- Tablet (טאבלטים: 481px עד 768px) --- */
 @media (min-width: 481px) and (max-width: 768px) {
-    .central-container, .table-card {
+
+    .central-container,
+    .table-card {
         max-width: 90% !important;
     }
 
     .management-grid {
-        grid-template-columns: 1fr !important; /* שדה אחד בשורה */
+        grid-template-columns: 1fr !important;
+        /* שדה אחד בשורה */
     }
 }
 
 /* --- Laptop (לפטופים: 769px עד 1024px) --- */
 @media (min-width: 769px) and (max-width: 1024px) {
-    .central-container, .table-card {
+
+    .central-container,
+    .table-card {
         max-width: 85% !important;
     }
 }
 
 /* --- Desktop (מסכים גדולים: מעל 1025px) --- */
 @media (min-width: 1025px) {
-    .central-container, .table-card {
-        max-width: 1100px !important; /* הגבלה כדי שלא יימרח מדי */
+
+    .central-container,
+    .table-card {
+        max-width: 1100px !important;
+        /* הגבלה כדי שלא יימרח מדי */
     }
 }
 
@@ -1415,18 +1552,20 @@ html, body {
         text-align: center;
     }
 }
- /* --- רספונסיביות לכל המכשירים ---  */
+
+/* --- רספונסיביות לכל המכשירים ---  */
 
 /* טאבלטים (עד 768px) */
 @media (max-width: 768px) {
     .page-wrapper {
-        padding-top: 100px !important; /* Header לרוב קטן יותר בנייד */
+        padding-top: 100px !important;
+        /* Header לרוב קטן יותר בנייד */
     }
-    
+
     .welcome-section {
         padding: 20px !important;
     }
-    
+
     h1 {
         font-size: 1.6rem !important;
     }
@@ -1439,11 +1578,11 @@ html, body {
         padding-left: 10px !important;
         padding-right: 10px !important;
     }
-    
+
     .central-container {
         gap: 15px;
     }
-    
+
     .avatar-circle {
         width: 50px;
         height: 50px;

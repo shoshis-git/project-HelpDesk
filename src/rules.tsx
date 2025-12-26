@@ -1,12 +1,12 @@
-import {  useContext,  type FC, type ReactNode } from "react";
+import { useContext, type FC, type ReactNode } from "react";
 import { AuthContext } from "./context/AuthContext";
 import { Navigate } from "react-router-dom";
 
 
 
-interface RulesProps{
-    children: ReactNode;
-    rules?: string[];
+interface RulesProps {
+  children: ReactNode;
+  rules?: string[];
 }
 
 

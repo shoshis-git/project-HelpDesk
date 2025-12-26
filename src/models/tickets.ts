@@ -1,9 +1,9 @@
 
- export interface Ticket {
+export interface Ticket {
     id: number;
     subject: string;
     description: string;
-    status_id:number;
+    status_id: number;
     priority_id: number;
     created_at: Date;
     updated_at: Date;
@@ -15,9 +15,9 @@
     created_by_email: string;
     assigned_to_name: string;
     assigned_to_email: string;
-  
+
 }
- export interface TicketStatus {
+export interface TicketStatus {
     id: number;
     name: string;
 }
@@ -25,7 +25,7 @@ export interface TicketPriority {
     id: number;
     name: string;
 }
-export interface Comments{
+export interface Comments {
     id: number;
     ticket_id: number;
     author_id: number;
@@ -35,9 +35,9 @@ export interface Comments{
     author_email: string;
 }
 export interface NewTicket {
- 
-  subject:string,
-  description:string,
-  priority_id:number
+
+    subject: string,
+    description: string,
+    priority_id: number
 
 }

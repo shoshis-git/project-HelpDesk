@@ -1,6 +1,6 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import Login from "./components/Login";
-import AuthProvider from "./context/AuthContext";
+
 import App from "./App";
 import Dashboard from "./components/Dashboard";
 import Rules from "./rules";
@@ -15,7 +15,7 @@ import Register from "./components/Register";
 import Tickets from "./components/Tickets";
 import NewTickets from "./components/NewTicket";
 import TicketsList from "./components/TicketsList";
-
+import NotFoundPage from "./components/NotFound";
 
 
 
@@ -95,7 +95,7 @@ const routes = createBrowserRouter([
     },
     {
         path: "*",
-        element: <div>not found</div>
+        element: <NotFoundPage />
     }
 ])
 

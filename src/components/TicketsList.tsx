@@ -7,7 +7,7 @@ import { getAllTicketes, getPriorities, getStatuses } from "../pages/ticketsApi"
 
 import { getAllUsers } from "../pages/usersApi";
 import type { User } from "../models/user";
-import type { Ticket } from "../models/tickets";
+
 
 
 
@@ -35,24 +35,17 @@ const TicketsList: FunctionComponent = () => {
 
         const tickets = await getAllTicketes(auth.token);
         let agents = [];
-        let ticketsFilterd = []
+
         if (auth.user?.role == "admin") {
           const users = await getAllUsers(auth.token);
           agents = users.filter((user: User) => user.role === "agent");
-          ticketsFilterd = tickets;
+
 
         }
-        else if (auth.user?.role == "agent") {
-          ticketsFilterd = tickets.filter((ticket: Ticket) => ticket.assigned_to === auth.user?.id);
 
-        }
-        else if (auth.user?.role == "customer") {
-          ticketsFilterd = tickets.filter((ticket: Ticket) => ticket.created_by === auth.user?.id);
-        }
         const statues = await getStatuses(auth.token);
         const priority = await getPriorities(auth.token);
-        console.log("auth.user", auth.user);
-        console.log("tickets from API", tickets);
+
 
 
         dispatch({
