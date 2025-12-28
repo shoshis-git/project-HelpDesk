@@ -25,7 +25,7 @@ import Swal from "sweetalert2";
 const AdminUsers: FunctionComponent = () => {
 
     const [users, setUsers] = useState<User[]>([]);
-   
+
     const [error, setError] = useState<string | null>(null);
     const { state } = useContext(AuthContext);
     const [showAddUser, setShowAddUser] = useState(false);
@@ -194,7 +194,7 @@ const AdminUsers: FunctionComponent = () => {
                             name="role"
                             value={formData.role}
                             onChange={handleChange}
-                           
+
                         >
                             <MenuItem value="customer">Customer</MenuItem>
                             <MenuItem value="agent">Agent</MenuItem>
