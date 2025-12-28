@@ -35,14 +35,14 @@ const NewTickets: FunctionComponent<NewTicketProps> = () => {
       dispatch({ type: "UPDATE_TICKET", payload: response });
       reset();
       Swal.fire({
-      title: 'הטיקט נוסף',
-      text: 'הטיקט נוסף בהצלחה נשתדל לענות בהקדם האפשרי',
-      icon: 'success',
-      confirmButtonText: 'מעולה',
-      confirmButtonColor: '#28a745', // צבע ירוק להצלחה
-      timer: 2500, // ההודעה תיסגר אוטומטית אחרי 2.5 שניות
-      timerProgressBar: true
-    });
+        title: 'הטיקט נוסף',
+        text: 'הטיקט נוסף בהצלחה נשתדל לענות בהקדם האפשרי',
+        icon: 'success',
+        confirmButtonText: 'מעולה',
+        confirmButtonColor: '#28a745', // צבע ירוק להצלחה
+        timer: 2500, // ההודעה תיסגר אוטומטית אחרי 2.5 שניות
+        timerProgressBar: true
+      });
 
       // ✅ מעבר לרשימת הטיקטים
       navigate("/tickets/ticketList");
@@ -50,11 +50,11 @@ const NewTickets: FunctionComponent<NewTicketProps> = () => {
     } catch (err: any) {
       dispatch({ type: "LOAD_FAILURE", payload: err.response?.data?.message || "Added Failed" });
       Swal.fire({
-      title: 'אופס...',
-      text: 'חלה שגיאה בשליחת הטיקט. כדאי לנסות שוב.',
-      icon: 'error',
-      confirmButtonText: 'הבנתי'
-    });
+        title: 'אופס...',
+        text: 'חלה שגיאה בשליחת הטיקט. כדאי לנסות שוב.',
+        icon: 'error',
+        confirmButtonText: 'הבנתי'
+      });
 
     }
 
@@ -78,16 +78,24 @@ const NewTickets: FunctionComponent<NewTicketProps> = () => {
         dispatch({ type: "LOAD_PRIORITY", payload: priority })
       }
       catch (err: any) {
-        
+
         dispatch({ type: "LOAD_FAILURE", payload: err.response?.data?.message || "Load Failed" })
 
       }
+      
     }
     loaderPriority();
 
   }, [auth.token])
 
+  if (state.loading) {
 
+    return <div >טוען</div>
+  }
+  if (state.error) {
+
+    return <div>{state.error}</div>
+  }
   return (<div className="form-page-container">
     <div className="new-ticket-card">
       <header className="form-header">

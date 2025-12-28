@@ -58,6 +58,13 @@ const Register: FunctionComponent = () => {
 
   }, [state.isAuthenticated]);
 
+  if(state.loading){
+    return <p>טוען משתמש...</p>;
+  }
+  if(state.error){
+    return <p>{state.error}</p>;
+  }
+
   return (<div className="register-page-wrapper">
     <div className="register-card">
       <header className="register-header">

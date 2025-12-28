@@ -82,7 +82,8 @@ const reducerTickets = (state: InitialTicketsState, action: TicketsAction) => {
     case "LOAD_PRIORITY":
       return {
         ...state,
-        priorities: action.payload
+        priorities: action.payload,
+        loading: false
       };
 
     default:

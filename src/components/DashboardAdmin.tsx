@@ -10,10 +10,10 @@ const AdminDashboard: React.FC = () => {
     <>
       <h1>ניהול מערכת</h1>
 
-      <nav>
-        <Link to="/users">משתמשים</Link> |{" "}
-        <Link to="/tickets/ticketList">טיקטים</Link> |{" "}
-        <Link to="/statuses">סטטוסים</Link> |{" "}
+      <nav className="blue-nav">
+        <Link to="/users">משתמשים</Link>
+        <Link to="/tickets/ticketList">טיקטים</Link>
+        <Link to="/statuses">סטטוסים</Link>
         <Link to="/priorities">עדיפויות</Link>
       </nav>
 

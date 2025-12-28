@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, type FunctionComponent } from "react";
+import React, { useCallback, useContext, useEffect, useState, type FunctionComponent } from "react";
 
 import { createUser, getAllUsers } from "../pages/usersApi";
 
@@ -13,6 +13,7 @@ import {
     Typography,
     Box,
     Alert,
+    MenuItem,
 
 
 } from '@mui/material';
@@ -24,11 +25,12 @@ import Swal from "sweetalert2";
 const AdminUsers: FunctionComponent = () => {
 
     const [users, setUsers] = useState<User[]>([]);
-    const [loading, setLoading] = useState(true);
+   
     const [error, setError] = useState<string | null>(null);
     const { state } = useContext(AuthContext);
     const [showAddUser, setShowAddUser] = useState(false);
-
+    const [loadingUsers, setLoadingUsers] = useState(true);
+    const [submitting, setSubmitting] = useState(false);
 
     const [formData, setFormData] = useState({
         name: "",
@@ -36,10 +38,10 @@ const AdminUsers: FunctionComponent = () => {
         password: "",
         role: "customer"
     });
-    const loaderUsers = async () => {
+    const loaderUsers = useCallback(async () => {
 
         if (!state.token) return;
-        setLoading(true);
+        setLoadingUsers(true);
         setError(null);
 
         try {
@@ -53,12 +55,12 @@ const AdminUsers: FunctionComponent = () => {
             else
                 setError("שגיאה בטעינת משתמשים");
 
-            console.error("Error fetching users:", error);
+
         }
         finally {
-            setLoading(false);
+            setLoadingUsers(false);
         }
-    }
+    }, [state.token]);
     useEffect(() => {
 
         if (state.token)
@@ -66,23 +68,25 @@ const AdminUsers: FunctionComponent = () => {
 
     }, [state.token]);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
         });
     };
 
-
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        setLoading(true);
+        setSubmitting(true);
         setError(null);
 
         try {
 
 
-            createUser(formData, state.token!);
+            await createUser(formData, state.token!);
 
             setFormData({
                 name: "",
@@ -94,7 +98,7 @@ const AdminUsers: FunctionComponent = () => {
             loaderUsers(); // רענון רשימת משתמשים
             Swal.fire({
                 title: 'המשתמש נוסף!',
-                text: 'המשתמש פורסמה בהצלחה.',
+                text: 'המשתמש פורסם בהצלחה.',
                 icon: 'success',
                 confirmButtonText: 'מעולה',
                 confirmButtonColor: '#28a745', // צבע ירוק להצלחה
@@ -110,12 +114,13 @@ const AdminUsers: FunctionComponent = () => {
                 confirmButtonText: 'הבנתי'
             });
         } finally {
-            setLoading(false);
+            setSubmitting(false);
         }
     }
 
 
-    if (loading) return <p>טוען משתמשים...</p>;
+    if (loadingUsers) return <p>טוען משתמשים...</p>;
+    if (error) return <p>{error}</p>
     return (<>
 
 
@@ -183,18 +188,21 @@ const AdminUsers: FunctionComponent = () => {
                             required
                         />
 
-                        <select
+                        <TextField
+                            select
+                            label="תפקיד"
                             name="role"
                             value={formData.role}
-                            onChange={(e: React.ChangeEvent<HTMLSelectElement>) => handleChange(e)}
+                            onChange={handleChange}
+                           
                         >
-                            <option value="customer">Customer</option>
-                            <option value="agent">Agent</option>
-                            <option value="admin">Admin</option>
-                        </select>
+                            <MenuItem value="customer">Customer</MenuItem>
+                            <MenuItem value="agent">Agent</MenuItem>
+                            <MenuItem value="admin">Admin</MenuItem>
+                        </TextField>
 
-                        <Button variant="contained" type="submit" disabled={loading}>
-                            {loading ? "שומר..." : "הוסף משתמש"}
+                        <Button variant="contained" type="submit" disabled={submitting}>
+                            {submitting ? "שומר..." : "הוסף משתמש"}
                         </Button>
 
                         {error && <Alert severity="error">{error}</Alert>}

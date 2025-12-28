@@ -10,12 +10,6 @@ import type { User } from "../models/user";
 
 
 
-
-
-
-
-
-
 const TicketsList: FunctionComponent = () => {
   const { state, dispatch } = useContext(TicketsContext);
   const { state: auth } = useContext(AuthContext);

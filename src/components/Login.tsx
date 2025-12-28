@@ -48,6 +48,11 @@ const Login: FunctionComponent = () => {
 
   }
 
+  if(state.loading)
+  {
+    return <p>טוען משתמש...</p>;
+  }
+{state.error && <div className="alert-error">{state.error}</div>}
 
   return (
     <div className="login-page-wrapper">

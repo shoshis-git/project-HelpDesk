@@ -33,7 +33,7 @@ const AdminStatuses: FunctionComponent = () => {
         setLoading(true);
         try {
             const data = await createStatues(statues, state.token!);
-            setstatues(data.name);
+            setstatues("");
             loadStatues();
             Swal.fire({
                 title: 'הסטטוס נשמר!',
